@@ -1,7 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 
 import 'config.dart';
 
@@ -30,7 +29,6 @@ class Initializer {
     connect.timeout = const Duration(seconds: 20);
     connect.httpClient.maxAuthRetries = 0;
 
-    Logger().i('connected to: $url');
     Get.put(connect);
   }
 }
