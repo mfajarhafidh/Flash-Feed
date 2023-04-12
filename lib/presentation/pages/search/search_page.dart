@@ -12,19 +12,24 @@ class SearchPage extends GetView<SearchController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 100,
         leading: BackButtonWidget(),
         title: Padding(
           padding: EdgeInsets.only(left: 5, right: 30),
-          child: TextFormField(
-            autofocus: true,
-            decoration: InputDecoration(
-                hintText: "Search Here", border: InputBorder.none),
-            scrollPadding: EdgeInsets.all(5),
-            onChanged: (val) {
-              controller.findNews.value = val;
-            },
-            onFieldSubmitted: (value) =>
-                controller.getSearchNews(searchParams: value),
+          child: Form(
+            key: controller.searchKey,
+            child: TextFormField(
+              autofocus: true,
+              validator: (value) => controller.emptyValidator(value!),
+              decoration: InputDecoration(
+                  hintText: "Search Here", border: InputBorder.none),
+              scrollPadding: EdgeInsets.all(5),
+              onChanged: (val) {
+                controller.findNews.value = val;
+              },
+              onFieldSubmitted: (value) =>
+                  controller.getSearchNews(searchParams: value),
+            ),
           ),
         ),
         centerTitle: true,

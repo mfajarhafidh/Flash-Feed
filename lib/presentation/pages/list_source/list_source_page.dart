@@ -55,6 +55,34 @@ class ListSourcePage extends GetView<ListSourceController> {
                           ),
                         ),
                       ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 30),
+                        child: Form(
+                          key: controller.listSourceKey,
+                          child: Container(
+                            padding: const EdgeInsets.only(left: 30),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.grey,
+                            ),
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                  icon: Icon(Icons.search_sharp),
+                                  hintText: "Search News Source",
+                                  border: InputBorder.none),
+                              scrollPadding: EdgeInsets.all(5),
+                              onChanged: (value) {
+                                controller.searchForItem(searchParam: value);
+                              },
+                              onFieldSubmitted: (value) =>
+                                  controller.searchForItem(searchParam: value),
+                            ),
+                          ),
+                        ),
+                      ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 10, vertical: 10),
