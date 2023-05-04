@@ -8,7 +8,8 @@ import 'package:get/get.dart';
 class HomeBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<RemoteNewsDataSource>(() => RemoteNewsDataSource());
+    Get.lazyPut<RemoteNewsDataSource>(
+        () => RemoteNewsDataSource(httpClient: Get.find<GetConnect>()));
     Get.lazyPut<NewsRepository>(
         () => NewsRepositoryImpl(Get.find<RemoteNewsDataSource>()));
 

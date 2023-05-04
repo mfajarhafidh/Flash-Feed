@@ -1,12 +1,10 @@
-import 'package:flashfeed/domain/core/constants/constants.dart';
-import 'package:flashfeed/domain/core/utils/snackbar.util.dart';
-import 'package:flashfeed/domain/entities/source_list_model.dart';
+import 'package:flashfeed/domain/entities/news/source_list_model.dart';
 import 'package:flashfeed/domain/use%20cases/list_source/get_list_source_based_category_use_case.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ListSourceController extends GetxController {
-  String category = Get.arguments;
+  late String category;
   RxList<Source> sourceList = <Source>[].obs;
   RxBool isLoading = false.obs;
 
@@ -19,10 +17,11 @@ class ListSourceController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    getListSourceBasedCategory(category: category);
+    category = Get.arguments;
+    getListSourceBasedCategory();
   }
 
-  Future<void> getListSourceBasedCategory({required String category}) async {
+  Future<void> getListSourceBasedCategory() async {
     isLoading.toggle();
     try {
       final response =
@@ -31,7 +30,6 @@ class ListSourceController extends GetxController {
       isLoading.toggle();
     } catch (e) {
       isLoading.toggle();
-      SnackbarUtil.showError(message: SnackBarConstants.snackbarShowError);
     }
   }
 
@@ -41,10 +39,10 @@ class ListSourceController extends GetxController {
           item.name!.toLowerCase().contains(searchParam.toLowerCase()));
       if (searchParam.isEmpty) {
         sourceList.clear();
-        getListSourceBasedCategory(category: category);
+        getListSourceBasedCategory();
       }
     } catch (e) {
-      SnackbarUtil.showError(message: SnackBarConstants.snackbarShowError);
+      Exception('Error');
     }
   }
 }

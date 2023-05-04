@@ -1,5 +1,5 @@
 import 'package:flashfeed/domain/entities/news/news_model.dart';
-import 'package:flashfeed/domain/entities/source_list_model.dart';
+import 'package:flashfeed/domain/entities/news/source_list_model.dart';
 import 'package:flashfeed/domain/repositories/news/news_repository.dart';
 import 'package:flashfeed/infrastructure/data/data%20sources/remote/news/remote_news_data_source.dart';
 

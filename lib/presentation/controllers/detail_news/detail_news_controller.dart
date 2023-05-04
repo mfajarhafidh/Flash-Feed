@@ -1,5 +1,3 @@
-import 'package:flashfeed/domain/core/constants/constants.dart';
-import 'package:flashfeed/domain/core/utils/snackbar.util.dart';
 import 'package:get/get.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -21,9 +19,7 @@ class DetailNewsController extends GetxController {
         ..setJavaScriptMode(JavaScriptMode.unrestricted)
         ..loadRequest(Uri.parse(url));
     } catch (e) {
-      isLoading.toggle();
-      throw SnackbarUtil.showError(
-          message: SnackBarConstants.snackbarShowError);
+      throw isLoading.toggle();
     }
   }
 }
