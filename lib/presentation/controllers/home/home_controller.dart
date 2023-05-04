@@ -1,18 +1,13 @@
-import 'package:flashfeed/domain/core/constants/constants.dart';
-import 'package:flashfeed/domain/core/utils/snackbar.util.dart';
-import 'package:flashfeed/domain/entities/source_list_model.dart';
 import 'package:flashfeed/domain/use%20cases/home/get_news_based_source_use_case.dart';
 import 'package:get/get.dart';
 
 import '../../../domain/entities/news/article_model.dart';
 
 class HomeController extends GetxController {
-  String source = Get.arguments;
+  late String source;
 
   RxList<ArticleModel> news = <ArticleModel>[].obs;
-  RxList<Source> sourceList = <Source>[].obs;
 
-  RxBool notFound = false.obs;
   RxBool isLoading = false.obs;
 
   final GetNewsBasedSourceUseCase _getNewsBasedSourceUseCase;
@@ -24,22 +19,25 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    source = Get.arguments;
     getNewsBasedSource(source: source);
   }
 
-  Future<void> refreshListArticle() async {
-    isLoading.value == true;
+  Future<void> refreshListArticle({required String source}) async {
+    isLoading.toggle();
     news.clear();
     await getNewsBasedSource(source: source);
-    isLoading.value == false;
+    isLoading.toggle();
   }
 
   Future<void> getNewsBasedSource({required String source}) async {
+    isLoading.toggle();
     try {
       final response = await _getNewsBasedSourceUseCase.call(source: source);
-      news.addAll(response.articles);
+      news.addAll(response.articles!);
+      isLoading.toggle();
     } catch (e) {
-      SnackbarUtil.showError(message: SnackBarConstants.snackbarShowError);
+      isLoading.toggle();
     }
   }
 }

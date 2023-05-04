@@ -1,5 +1,5 @@
 import '../../entities/news/news_model.dart';
-import '../../entities/source_list_model.dart';
+import '../../entities/news/source_list_model.dart';
 
 abstract class NewsRepository {
   Future<NewsModel> getNewsBasedSource({required String source});

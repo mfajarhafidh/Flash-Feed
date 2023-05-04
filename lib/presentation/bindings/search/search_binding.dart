@@ -1,4 +1,4 @@
-import 'package:flashfeed/domain/use%20cases/home/get_search_news_use_case.dart';
+import 'package:flashfeed/domain/use%20cases/search/get_search_news_use_case.dart';
 import 'package:flashfeed/presentation/controllers/search/search_controller.dart';
 import 'package:get/get.dart';
 
@@ -9,7 +9,8 @@ import '../../../infrastructure/data/data sources/repositories/news/news_reposit
 class SearchBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<RemoteNewsDataSource>(() => RemoteNewsDataSource());
+    Get.lazyPut<RemoteNewsDataSource>(
+        () => RemoteNewsDataSource(httpClient: Get.find<GetConnect>()));
     Get.lazyPut<NewsRepository>(
         () => NewsRepositoryImpl(Get.find<RemoteNewsDataSource>()));
 

@@ -1,4 +1,4 @@
-import 'package:flashfeed/domain/entities/source_list_model.dart';
+import 'package:flashfeed/domain/entities/news/source_list_model.dart';
 import 'package:flashfeed/domain/repositories/news/news_repository.dart';
 
 class GetListSourceBasedCategoryUseCase {

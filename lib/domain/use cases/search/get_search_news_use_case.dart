@@ -6,7 +6,7 @@ class GetSearchNewsUseCase {
 
   GetSearchNewsUseCase(this._newsRepository);
 
-  Future<NewsModel?> call({required String searchParams}) {
+  Future<NewsModel> call({required String searchParams}) {
     return _newsRepository.getSearchNews(searchParams: searchParams);
   }
 }

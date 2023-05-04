@@ -7,15 +7,15 @@ part of 'news_model.dart';
 // **************************************************************************
 
 NewsModel _$NewsModelFromJson(Map<String, dynamic> json) => NewsModel(
-      json['status'] as String,
-      json['totalResults'] as int,
-      (json['articles'] as List<dynamic>)
-          .map((e) => ArticleModel.fromJson(e as Map<String, dynamic>))
+      status: json['status'] as String?,
+      totalResults: json['totalResults'] as int?,
+      articles: (json['articles'] as List<dynamic>?)
+          ?.map((e) => ArticleModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
 Map<String, dynamic> _$NewsModelToJson(NewsModel instance) => <String, dynamic>{
       'status': instance.status,
       'totalResults': instance.totalResults,
-      'articles': instance.articles.map((e) => e.toJson()).toList(),
+      'articles': instance.articles?.map((e) => e.toJson()).toList(),
     };
