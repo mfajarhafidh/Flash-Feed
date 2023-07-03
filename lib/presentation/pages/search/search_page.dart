@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 
 import '../../../infrastructure/navigation/routes.dart';
 
-class SearchPage extends GetView<SearchController> {
+class SearchPage extends GetView<SearchPageController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

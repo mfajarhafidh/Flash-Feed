@@ -17,7 +17,7 @@ class SearchBinding extends Bindings {
     Get.lazyPut<GetSearchNewsUseCase>(
         () => GetSearchNewsUseCase(Get.find<NewsRepository>()));
 
-    Get.lazyPut<SearchController>(() => SearchController(
+    Get.lazyPut<SearchPageController>(() => SearchPageController(
           Get.find<GetSearchNewsUseCase>(),
         ));
   }

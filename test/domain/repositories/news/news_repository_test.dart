@@ -1,4 +1,3 @@
-import 'package:flashfeed/domain/entities/news/article_model.dart';
 import 'package:flashfeed/domain/entities/news/news_model.dart';
 import 'package:flashfeed/domain/entities/news/source_list_model.dart';
 import 'package:flashfeed/domain/repositories/news/news_repository.dart';
@@ -13,8 +12,6 @@ void main() {
     final source = 'cnn';
     final category = 'business';
     final searchParams = 'covid';
-    final totalResults = 3;
-    final articles = <ArticleModel>[];
 
     setUp(() {
       newsRepository = MockNewsRepository();

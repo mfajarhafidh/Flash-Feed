@@ -4,7 +4,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:flashfeed/domain/entities/news/article_model.dart';
 import 'package:flashfeed/domain/use%20cases/home/get_news_based_source_use_case.dart';
-import 'package:get/get.dart';
 
 class MockGetNewsBasedSourceUseCase extends Mock
     implements GetNewsBasedSourceUseCase {}

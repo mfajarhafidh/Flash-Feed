@@ -3,13 +3,12 @@ import 'package:flashfeed/presentation/controllers/search/search_controller.dart
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flashfeed/domain/entities/news/article_model.dart';
 import 'package:flashfeed/domain/use%20cases/search/get_search_news_use_case.dart';
-import 'package:get/get.dart';
 import 'package:mocktail/mocktail.dart';
 
 class MockGetSearchNewsUseCase extends Mock implements GetSearchNewsUseCase {}
 
 void main() {
-  late SearchController searchController;
+  late SearchPageController searchController;
   late GetSearchNewsUseCase mockGetSearchNewsUseCase;
 
   final testArticleModel = ArticleModel(
@@ -21,7 +20,7 @@ void main() {
 
   setUp(() {
     mockGetSearchNewsUseCase = MockGetSearchNewsUseCase();
-    searchController = SearchController(mockGetSearchNewsUseCase);
+    searchController = SearchPageController(mockGetSearchNewsUseCase);
   });
 
   group('SearchController', () {
